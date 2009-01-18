@@ -1,7 +1,12 @@
 /**
- * The Sexy Page Turn JQuery Plugin
+ * The Sexy Curls JQuery Plugin
  * By Elliott Kember - http://twitter.com/elliottkember
  * Released under the MIT license (MIT-LICENSE.txt)
+ * 
+ * My only request is: please don't over-use this plugin.
+ * If this ends up being used all over the internets, and becomes "that annoying effect", I'll be upset.		
+ *
+ * I dragged a curl, and I liked it - I hope @jresig don't mind it.
  */
 
 (function($){
@@ -11,7 +16,7 @@
 	  var defaults = {
 			directory: 'turn',			// The directory we're in
 		  side: 'left',           // change me to "right" if you want rightness
-			turnImage: 'fold3.png', // The triangle-shaped fold image
+			turnImage: 'fold.png', // The triangle-shaped fold image
 	    maxHeight: 400,					// The maximum height. Duh.
 			starting_width: 80,			// The height and width 
 			starting_height: 80			// with which	to start
