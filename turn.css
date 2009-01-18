@@ -36,13 +36,13 @@
 }
 
 #turn_wrapper.right #turn_hideme {
-	float: right;
+	float: right !important;
 	right: 0;
 	left: auto;
 }
 #turn_wrapper.right #turn_object {
 	right: 0 !important;
-	left: auto;
+	left: auto !important;
 }
 
 #turn_wrapper.right {
@@ -50,12 +50,12 @@
 	top: 0;
 	width: 100%;
 	height: 0;
-	right: 0;
+	right: 0 !important;
 }
 
 #turn_wrapper.right #turn_object * {
 	position: absolute;
-	right: 0;
+	right: 0 !important;
 }
 
 #turn_wrapper #turn_object img#turn_fold {
