@@ -15,7 +15,7 @@ Now, in your HTML, insert an object like this:
 Take note, it has an ID. This is useful. The object does not have to be an image, but images look awesome.
 For instance, I use a screenshot of my site's HTML code.
 
-If you don't have jQuery and jQueryUI, use these lines as needed in your HTML <head>:
+If you don't have jQuery and jQueryUI, use these lines as needed in your HTML <head>
 
 	<script type="text/javascript" src="turn/jquery1.3min.js"></script>
 	<script type="text/javascript" src="turn/jqueryui.js"></script>
