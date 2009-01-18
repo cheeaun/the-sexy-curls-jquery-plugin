@@ -12,6 +12,9 @@
 (function($){
  $.fn.fold = function(options) {
 	
+		// New - you don't have to specify options!
+		options = options || {}
+		
 		// Default awesomeness
 	  var defaults = {
 			directory: 'turn',			// The directory we're in
