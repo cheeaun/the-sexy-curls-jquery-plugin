@@ -19,7 +19,7 @@
 
 		// Change turnImage if we're running the default image, and they've specified 'right'
 		if (options.side == 'right' && !options.turnImage) {
-			defaults.turnImage = 'fold3-sw.png';
+			defaults.turnImage = 'fold-sw.png';
 		}
   
 		// Merge options with the defaults
