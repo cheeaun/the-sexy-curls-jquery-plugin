@@ -28,8 +28,7 @@
       maxHeight: 400,          // The maximum height. Duh.
       starting_width: 80,      // The height and width 
       starting_height: 80,      // with which  to start
-			autoCurl: false,
-			draggable: true
+			autoCurl: false
     };
 
     // Change turnImage if we're running the default image, and they've specified 'right'
@@ -66,7 +65,7 @@
     this.wrap(c).wrap(turn).after(img).wrap(h);
 		
 
-		if(options.draggable) {
+		if(options.autoCurl == false) {
 	    // Hit 'em with the drag-stick.
 	    $('#turn_object').resizable({ 
 	         maxHeight: options.maxHeight, 
