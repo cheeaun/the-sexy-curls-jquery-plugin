@@ -11,12 +11,12 @@
 
 (function($){
  $.fn.fold = function(options) {
-  	var ie55 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 5.5") != -1);
-		var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
-		
-		// We just won't show it for IE5.5 and IE6. Go away.
-		if (ie55 || ie6) {this.css('display', 'none');return true;}
-	
+    var ie55 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 5.5") != -1);
+    var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
+    
+    // We just won't show it for IE5.5 and IE6. Go away.
+    if (ie55 || ie6) {this.css('display', 'none');return true;}
+  
     // New - you don't have to specify options!
     options = options || {}
     
@@ -24,11 +24,11 @@
     var defaults = {
       directory: 'turn',      // The directory we're in
       side: 'left',           // change me to "right" if you want rightness
-      turnImage: 'fold.png', // The triangle-shaped fold image
-      maxHeight: 400,          // The maximum height. Duh.
-      starting_width: 80,      // The height and width 
-      starting_height: 80,      // with which  to start
-			autoCurl: false
+      turnImage: 'fold.png',  // The triangle-shaped fold image
+      maxHeight: 400,         // The maximum height. Duh.
+      starting_width: 80,     // The height and width 
+      starting_height: 80,    // with which to start (these should probably be camelCase, d'oh.)
+      autoCurl: false          // If this is set to true, the fold will curl/uncurl on mouseover/mouseout.
     };
 
     // Change turnImage if we're running the default image, and they've specified 'right'
@@ -63,33 +63,30 @@
   
     // Rappin', I'm rappin' - I'm rap-rap-rappin'.
     this.wrap(c).wrap(turn).after(img).wrap(h);
-		
-
-		if(options.autoCurl == false) {
-	    // Hit 'em with the drag-stick.
-	    $('#turn_object').resizable({ 
-	         maxHeight: options.maxHeight, 
-	         aspectRatio: true,
-	         ratio: true,
-	         border: false,
-	         dragHandle: false,
-	         knobHandles: true,
-	         handles:  options.side == 'left' ? 'se' : 'sw'
-	    });
-		}
-		
-		function mMouseOver(e) {
-	    $('#turn_object').stop().animate({width: options.maxHeight, height: options.maxHeight});
-	  }
-	  function mMouseOut(e) {
-	    $('#turn_object').stop().animate({width: options.starting_height, height: options.starting_height});
-	  }
-		
-		if(options.autoCurl == true) {
-	  	$('#turn_wrapper').bind('mouseover', mMouseOver );
-	  	$('#turn_wrapper').bind('mouseout', mMouseOut );
-	  }
-
-
+    
+    // If you want autoCurl, you don't get scrolling. Why? Because it looks silly.
+    if(options.autoCurl == false) {
+      // Hit 'em with the drag-stick because it ain't gonna curl itself!
+      $('#turn_object').resizable({ 
+        maxHeight: options.maxHeight, 
+        aspectRatio: true,
+        ratio: true,
+        border: false,
+        dragHandle: false,
+        knobHandles: true,
+        handles:  options.side == 'left' ? 'se' : 'sw'
+      });
+    } else {
+      // Thanks to @zzzrByte for this bit!
+      function mMouseOver(e) {
+        $('#turn_object').stop().animate({width: options.maxHeight, height: options.maxHeight});
+      }
+      function mMouseOut(e) {
+        $('#turn_object').stop().animate({width: options.starting_height, height: options.starting_height});
+      }
+      
+      $('#turn_wrapper').bind('mouseover', mMouseOver );
+      $('#turn_wrapper').bind('mouseout', mMouseOut );
+    }
   };
 })(jQuery);
