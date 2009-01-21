@@ -10,7 +10,7 @@
  */
 
 (function($){
- $.fn.fold = function(options) {
+  $.fn.fold = function(options) {
     var ie55 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 5.5") != -1);
     var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
     
@@ -47,8 +47,8 @@
     // Set up the wrapper objects
     h     = el('div').attr({id: 'turn_hideme'});
     c     = el('div').attr({id: 'turn_wrapper'});
-    turn = el('div').attr({id: 'turn_object'});
-    img  = el('img').attr({id: 'turn_fold', src: (options.directory+'/'+options.turnImage)});
+    turn  = el('div').attr({id: 'turn_object'});
+    img   = el('img').attr({id: 'turn_fold', src: (options.directory+'/'+options.turnImage)});
 
     // Set starting width and height
     turn.css({
