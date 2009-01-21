@@ -14,7 +14,7 @@
     var ie55 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 5.5") != -1);
     var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
     
-    // We just won't show it for IE5.5 and IE6. Go away.
+    // We just won't show it for IE5.5 and IE6. Go away. I'm really tempted to write "document.location= 'http://www.getfirefox.com';" here.
     if (ie55 || ie6) {this.css('display', 'none');return true;}
   
     // New - you don't have to specify options!
@@ -41,18 +41,18 @@
   
     // It's nicer-looking this way. Sorry if it breaks your stuff.
     var el = function(type){
-      return $(document.createElement(type))
+      return $(document.createElement(type));
     }
   
     // Set up the wrapper objects
-    h     = el('div').attr({id: 'turn_hideme'});
-    c     = el('div').attr({id: 'turn_wrapper'});
-    turn  = el('div').attr({id: 'turn_object'});
+    h     = el('div').attr({id: 'turn_hideme'  });
+    c     = el('div').attr({id: 'turn_wrapper' });
+    turn  = el('div').attr({id: 'turn_object'  });
     img   = el('img').attr({id: 'turn_fold', src: (options.directory+'/'+options.turnImage)});
 
-    // Set starting width and height
+    // Set starting width and height of our turn-o-ma-bob
     turn.css({
-      width: options.starting_width, 
+      width:  options.starting_width, 
       height: options.starting_height
     });
   
@@ -84,7 +84,6 @@
       function mMouseOut(e) {
         $('#turn_object').stop().animate({width: options.starting_height, height: options.starting_height});
       }
-      
       $('#turn_wrapper').bind('mouseover', mMouseOver );
       $('#turn_wrapper').bind('mouseout', mMouseOut );
     }
