@@ -28,7 +28,7 @@
       maxHeight: 400,         // The maximum height. Duh.
       starting_width: 80,     // The height and width 
       starting_height: 80,    // with which to start (these should probably be camelCase, d'oh.)
-      autoCurl: false          // If this is set to true, the fold will curl/uncurl on mouseover/mouseout.
+      autoCurl: false         // If this is set to true, the fold will curl/uncurl on mouseover/mouseout.
     };
 
     // Change turnImage if we're running the default image, and they've specified 'right'
