@@ -22,7 +22,7 @@
     
     // Default awesomeness
     var defaults = {
-      directory: 'turn',      // The directory we're in
+      directory: '.',      // The directory we're in
       side: 'left',           // change me to "right" if you want rightness
       turnImage: 'fold.png',  // The triangle-shaped fold image
       maxHeight: 400,         // The maximum height. Duh.
