@@ -15,14 +15,14 @@
     var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
     
     // We just won't show it for IE5.5 and IE6. Go away. I'm really tempted to write "document.location= 'http://www.getfirefox.com';" here.
-    if (ie55 || ie6) {this.remove();return true;}
+    if (ie55 || ie6) {this.remove(); return true;}
   
     // New - you don't have to specify options!
-    options = options || {}
+    options = options || {};
     
     // Default awesomeness
     var defaults = {
-      directory: '.',      // The directory we're in
+      directory: '.',         // The directory we're in
       side: 'left',           // change me to "right" if you want rightness
       turnImage: 'fold.png',  // The triangle-shaped fold image
       maxHeight: 400,         // The maximum height. Duh.
@@ -32,9 +32,7 @@
     };
 
     // Change turnImage if we're running the default image, and they've specified 'right'
-    if (options.side == 'right' && !options.turnImage) {
-      defaults.turnImage = 'fold-sw.png';
-    }
+    if (options.side == 'right' && !options.turnImage) defaults.turnImage = 'fold-sw.png';
   
     // Merge options with the defaults
     var options = $.extend(defaults, options);
@@ -47,14 +45,12 @@
 
     // Set starting width and height of our turn-o-ma-bob
     turn_object.css({
-      width:  options.starting_width, 
+      width: options.starting_width, 
       height: options.starting_height
     });
   
     // There are different CSS considerations for a top-right fold.
-    if (options.side == 'right'){
-      turn_wrapper.addClass('right');
-    }
+    if (options.side == 'right') turn_wrapper.addClass('right');
   
     // Rappin', I'm rappin' - I'm rap-rap-rappin'.
     this.wrap(turn_wrapper).wrap(turn_object).after(img).wrap(turn_hideme);
@@ -62,7 +58,7 @@
     // If you want autoCurl, you don't get scrolling. Why? Because it looks silly.
     turn_wrapper = $('#turn_wrapper');
     turn_object = $('#turn_object');
-    if(options.autoCurl == false) {
+    if (!options.autoCurl) {
       // Hit 'em with the drag-stick because it ain't gonna curl itself!
       turn_object.resizable({ 
         maxHeight: options.maxHeight, 
