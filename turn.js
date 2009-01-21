@@ -38,17 +38,12 @@
   
     // Merge options with the defaults
     var options = $.extend(defaults, options);
-  
-    // It's nicer-looking this way. Sorry if it breaks your stuff.
-    var el = function(type){
-      return $(document.createElement(type));
-    }
-  
+    
     // Set up the wrapper objects
-    h     = el('div').attr({id: 'turn_hideme'  });
-    c     = el('div').attr({id: 'turn_wrapper' });
-    turn  = el('div').attr({id: 'turn_object'  });
-    img   = el('img').attr({id: 'turn_fold', src: (options.directory+'/'+options.turnImage)});
+    h     = $('<div id="turn_hideme">');
+    c     = $('<div id="turn_wrapper">');
+    turn  = $('<div id="turn_object">');
+    img   = $('<img id="turn_fold" src="'+ (options.directory+'/'+options.turnImage) +'">');
 
     // Set starting width and height of our turn-o-ma-bob
     turn.css({
