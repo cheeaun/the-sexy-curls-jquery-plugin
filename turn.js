@@ -15,7 +15,7 @@
     var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
     
     // We just won't show it for IE5.5 and IE6. Go away. I'm really tempted to write "document.location= 'http://www.getfirefox.com';" here.
-    if (ie55 || ie6) {this.css('display', 'none');return true;}
+    if (ie55 || ie6) {this.remove();return true;}
   
     // New - you don't have to specify options!
     options = options || {}
