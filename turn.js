@@ -40,29 +40,31 @@
     var options = $.extend(defaults, options);
     
     // Set up the wrapper objects
-    h     = $('<div id="turn_hideme">');
-    c     = $('<div id="turn_wrapper">');
-    turn  = $('<div id="turn_object">');
-    img   = $('<img id="turn_fold" src="'+ (options.directory+'/'+options.turnImage) +'">');
+    var turn_hideme = $('<div id="turn_hideme">');
+    var turn_wrapper = $('<div id="turn_wrapper">');
+    var turn_object = $('<div id="turn_object">');
+    var img = $('<img id="turn_fold" src="'+ (options.directory+'/'+options.turnImage) +'">');
 
     // Set starting width and height of our turn-o-ma-bob
-    turn.css({
+    turn_object.css({
       width:  options.starting_width, 
       height: options.starting_height
     });
   
     // There are different CSS considerations for a top-right fold.
     if (options.side == 'right'){
-      c.addClass('right');
+      turn_wrapper.addClass('right');
     }
   
     // Rappin', I'm rappin' - I'm rap-rap-rappin'.
-    this.wrap(c).wrap(turn).after(img).wrap(h);
+    this.wrap(turn_wrapper).wrap(turn_object).after(img).wrap(turn_hideme);
     
     // If you want autoCurl, you don't get scrolling. Why? Because it looks silly.
+    turn_wrapper = $('#turn_wrapper');
+    turn_object = $('#turn_object');
     if(options.autoCurl == false) {
       // Hit 'em with the drag-stick because it ain't gonna curl itself!
-      $('#turn_object').resizable({ 
+      turn_object.resizable({ 
         maxHeight: options.maxHeight, 
         aspectRatio: true,
         ratio: true,
@@ -73,14 +75,20 @@
       });
     } else {
       // Thanks to @zzzrByte for this bit!
-      function mMouseOver(e) {
-        $('#turn_object').stop().animate({width: options.maxHeight, height: options.maxHeight});
-      }
-      function mMouseOut(e) {
-        $('#turn_object').stop().animate({width: options.starting_height, height: options.starting_height});
-      }
-      $('#turn_wrapper').bind('mouseover', mMouseOver );
-      $('#turn_wrapper').bind('mouseout', mMouseOut );
+      turn_wrapper.hover(
+        function(){
+          turn_object.stop().animate({
+            width: options.maxHeight,
+            height: options.maxHeight
+          });
+        },
+        function(){
+          turn_object.stop().animate({
+            width: options.starting_height,
+            height: options.starting_height
+          });
+        }
+      );
     }
   };
 })(jQuery);
