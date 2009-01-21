@@ -74,9 +74,8 @@
 #turn_wrapper .ui-resizable-handle {
   border: none !important;
   border-width: 0 !important;
-  background: none !important;
+	/* I have NO idea why this works for IE7, but it does. Background none doesn't work. Go figure. */
+  background: url(#none) !important; 
   width: 100% !important;
   height: 100% !important;
 }
-
-

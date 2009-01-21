@@ -11,7 +11,12 @@
 
 (function($){
  $.fn.fold = function(options) {
-  
+  	var ie55 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 5.5") != -1);
+		var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
+		
+		// We just won't show it for IE5.5 and IE6. Go away.
+		if (ie55 || ie6) {this.css('display', 'none');return true;}
+	
     // New - you don't have to specify options!
     options = options || {}
     
@@ -45,7 +50,7 @@
     c     = el('div').attr({id: 'turn_wrapper'});
     turn = el('div').attr({id: 'turn_object'});
     img  = el('img').attr({id: 'turn_fold', src: (options.directory+'/'+options.turnImage)});
-    
+
     // Set starting width and height
     turn.css({
       width: options.starting_width, 
@@ -59,6 +64,7 @@
   
     // Rappin', I'm rappin' - I'm rap-rap-rappin'.
     this.wrap(c).wrap(turn).after(img).wrap(h);
+		
 
 		if(options.draggable) {
 	    // Hit 'em with the drag-stick.
