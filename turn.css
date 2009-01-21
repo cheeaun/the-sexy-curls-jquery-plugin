@@ -20,6 +20,10 @@
 	z-index:1;
 }
 
+#turn_object{
+	position: relative;
+}
+
 #turn_wrapper.right #turn_hideme *,
 #turn_wrapper.right #turn_object {
 	float: right !important;
