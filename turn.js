@@ -22,7 +22,9 @@
       turnImage: 'fold.png', // The triangle-shaped fold image
       maxHeight: 400,          // The maximum height. Duh.
       starting_width: 80,      // The height and width 
-      starting_height: 80      // with which  to start
+      starting_height: 80,      // with which  to start
+			autoCurl: false,
+			draggable: true
     };
 
     // Change turnImage if we're running the default image, and they've specified 'right'
@@ -58,15 +60,31 @@
     // Rappin', I'm rappin' - I'm rap-rap-rappin'.
     this.wrap(c).wrap(turn).after(img).wrap(h);
 
-    // Hit 'em with the drag-stick.
-    $('#turn_object').resizable({ 
-         maxHeight: options.maxHeight, 
-         aspectRatio: true,
-         ratio: true,
-         border: false,
-         dragHandle: false,
-         knobHandles: true,
-         handles:  options.side == 'left' ? 'se' : 'sw'
-    });
+		if(options.draggable) {
+	    // Hit 'em with the drag-stick.
+	    $('#turn_object').resizable({ 
+	         maxHeight: options.maxHeight, 
+	         aspectRatio: true,
+	         ratio: true,
+	         border: false,
+	         dragHandle: false,
+	         knobHandles: true,
+	         handles:  options.side == 'left' ? 'se' : 'sw'
+	    });
+		}
+		
+		function mMouseOver(e) {
+	    $('#turn_object').stop().animate({width: options.maxHeight, height: options.maxHeight});
+	  }
+	  function mMouseOut(e) {
+	    $('#turn_object').stop().animate({width: options.starting_height, height: options.starting_height});
+	  }
+		
+		if(options.autoCurl == true) {
+	  	$('#turn_wrapper').bind('mouseover', mMouseOver );
+	  	$('#turn_wrapper').bind('mouseout', mMouseOut );
+	  }
+
+
   };
 })(jQuery);
