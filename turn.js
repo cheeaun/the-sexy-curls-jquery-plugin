@@ -6,7 +6,7 @@
  * My only request is: please don't over-use this plugin.
  * If this ends up being used all over the internets, and becomes "that annoying effect", I'll be upset.    
  *
- * I dragged a curl, and I liked it - I hope @jresig don't mind it.
+ * I dragged a curl, and I liked it - I hope @jeresig don't mind it.
  */
 
 (function($){
