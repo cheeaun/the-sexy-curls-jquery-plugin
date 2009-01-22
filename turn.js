@@ -15,14 +15,14 @@
     var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
     
     // We just won't show it for IE5.5 and IE6. Go away. I'm really tempted to write "document.location= 'http://www.getfirefox.com';" here.
-    if (ie55 || ie6) {this.remove();return true;}
+    if (ie55 || ie6) {this.remove(); return true;}
   
     // New - you don't have to specify options!
     options = options || {};
     
     // Default awesomeness
     var defaults = {
-      directory: 'turn',      // The directory we're in
+      directory: '.',         // The directory we're in
       side: 'left',           // change me to "right" if you want rightness
       turnImage: 'fold.png',  // The triangle-shaped fold image
       maxHeight: 400,         // The maximum height. Duh.
@@ -36,21 +36,16 @@
   
     // Merge options with the defaults
     var options = $.extend(defaults, options);
-  
-    // It's nicer-looking this way. Sorry if it breaks your stuff.
-    var el = function(type){
-      return $(document.createElement(type));
-    }
-  
+    
     // Set up the wrapper objects
-    h     = el('div').attr({id: 'turn_hideme'  });
-    c     = el('div').attr({id: 'turn_wrapper' });
-    turn  = el('div').attr({id: 'turn_object'  });
-    img   = el('img').attr({id: 'turn_fold', src: (options.directory+'/'+options.turnImage)});
+    var turn_hideme = $('<div id="turn_hideme">');
+    var turn_wrapper = $('<div id="turn_wrapper">');
+    var turn_object = $('<div id="turn_object">');
+    var img = $('<img id="turn_fold" src="'+ (options.directory+'/'+options.turnImage) +'">');
 
     // Set starting width and height of our turn-o-ma-bob
-    turn.css({
-      width:  options.starting_width, 
+    turn_object.css({
+      width: options.starting_width, 
       height: options.starting_height
     });
   
@@ -58,12 +53,13 @@
     if (options.side == 'right') turn_wrapper.addClass('right');
   
     // Rappin', I'm rappin' - I'm rap-rap-rappin'.
-    this.wrap(c).wrap(turn).after(img).wrap(h);
+    this.wrap(turn_wrapper).wrap(turn_object).after(img).wrap(turn_hideme);
     
     // If you want autoCurl, you don't get scrolling. Why? Because it looks silly.
+    
     if (!options.autoCurl) {
       // Hit 'em with the drag-stick because it ain't gonna curl itself!
-      $('#turn_object').resizable({ 
+      turn_object.resizable({ 
         maxHeight: options.maxHeight, 
         aspectRatio: true,
         ratio: true,
@@ -74,14 +70,20 @@
       });
     } else {
       // Thanks to @zzzrByte for this bit!
-      function mMouseOver(e) {
-        $('#turn_object').stop().animate({width: options.maxHeight, height: options.maxHeight});
-      }
-      function mMouseOut(e) {
-        $('#turn_object').stop().animate({width: options.starting_height, height: options.starting_height});
-      }
-      $('#turn_wrapper').bind('mouseover', mMouseOver );
-      $('#turn_wrapper').bind('mouseout', mMouseOut );
+      turn_wrapper.hover(
+        function(){
+          turn_object.stop().animate({
+            width: options.maxHeight,
+            height: options.maxHeight
+          });
+        },
+        function(){
+          turn_object.stop().animate({
+            width: options.starting_height,
+            height: options.starting_height
+          });
+        }
+      );
     }
   };
 })(jQuery);
