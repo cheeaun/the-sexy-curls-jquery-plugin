@@ -57,6 +57,9 @@
     
     // If you want autoCurl, you don't get scrolling. Why? Because it looks silly.
     
+    turn_wrapper = $('#turn_wrapper');
+    turn_object = $('#turn_object');
+
     if (!options.autoCurl) {
       // Hit 'em with the drag-stick because it ain't gonna curl itself!
       turn_object.resizable({ 
