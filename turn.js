@@ -26,8 +26,8 @@
       side: 'left',           // change me to "right" if you want rightness
       turnImage: 'fold.png',  // The triangle-shaped fold image
       maxHeight: 400,         // The maximum height. Duh.
-      starting_width: 80,     // The height and width 
-      starting_height: 80,    // with which to start (these should probably be camelCase, d'oh.)
+      startingWidth: 80,     // The height and width 
+      startingHeight: 80,    // with which to start (these should probably be camelCase, d'oh.)
       autoCurl: false         // If this is set to true, the fold will curl/uncurl on mouseover/mouseout.
     };
 
@@ -45,8 +45,8 @@
 
     // Set starting width and height of our turn-o-ma-bob
     turn_object.css({
-      width: options.starting_width, 
-      height: options.starting_height
+      width: options.startingWidth, 
+      height: options.startingHeight
     });
   
     // There are different CSS considerations for a top-right fold.
@@ -82,8 +82,8 @@
         },
         function(){
           turn_object.stop().animate({
-            width: options.starting_height,
-            height: options.starting_height
+            width: options.startingHeight,
+            height: options.startingHeight
           });
         }
       );
