@@ -65,11 +65,7 @@
       turn_object.resizable({ 
         maxHeight: options.maxHeight, 
         aspectRatio: true,
-        ratio: true,
-        border: false,
-        dragHandle: false,
-        knobHandles: true,
-        handles:  options.side == 'left' ? 'se' : 'sw'
+        handles: options.side == 'left' ? 'se' : 'sw'
       });
     } else {
       // Thanks to @zzzrByte for this bit!
